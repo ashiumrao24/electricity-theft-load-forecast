@@ -76,6 +76,101 @@ The dataset includes:
 The preprocessing script converts this minute-level data into **hourly kWh** with additional engineered features for forecasting and theft detection.
 
 ---
+## 🔧 Workflow Overview
+
+## 🧹 1️⃣ Data Preprocessing (`src/preprocess.py`)
+
+### Steps performed:
+- Load raw dataset (`household_power_consumption.txt`)
+- Combine Date + Time → unified datetime column
+- Handle missing or invalid values
+- Convert raw minute-level power to **hourly kWh**
+  - `energy_kwh = (Global_active_power * 1/60)`
+- Generate engineered ML features:
+  - Hour of day
+  - Day of week
+  - Month
+  - Weekend flag
+  - Lag features:  
+    - `lag_1h`, `lag_24h`, `lag_168h`
+  - Rolling statistics:
+    - 24-hour rolling mean
+    - 24-hour rolling standard deviation
+
+### Output:
+```bash
+data/hourly_energy_features.csv
+```
+
+---
+
+## 📈 2️⃣ Load Forecasting Model (`src/models_forecast.py`)
+
+### What happens:
+- Split processed hourly features into train/test sets
+- Train **XGBoost Regressor** to predict hourly energy usage
+- Evaluate model using:
+  - MAE (Mean Absolute Error)
+  - RMSE (Root Mean Square Error)
+- Save trained model
+
+### Output:
+```bash
+models/xgb_forecast.pkl
+```
+
+### Example Performance:
+| Metric | Value |
+|--------|--------|
+| MAE | ~0.32 |
+| RMSE | ~0.46 |
+
+---
+
+## ⚠️ 3️⃣ Electricity Theft Simulation & Detection (`src/models_theft.py`)
+
+### Theft Simulation:
+- Randomly pick ~5% of timestamps
+- Reduce consumption by a random factor (20%–70%)
+- Create synthetic labels:
+  - `is_theft = 1` for tampered readings
+  - `is_theft = 0` otherwise
+
+### Feature Engineering for Theft Detection:
+- Forecasted consumption (from model)
+- Residual = Actual − Forecast
+- Absolute residual
+- Residual ratio
+- Negative residual flag
+- Rolling residual features (3h, 24h)
+- Time-based features
+
+### Model:
+- **XGBoost Classifier**  
+- Handles imbalance using `scale_pos_weight`
+
+### Outputs:
+```bash
+models/xgb_theft.pkl
+data/final_powerbi_dataset.csv
+```
+
+This exported dataset is used for Power BI reporting.
+
+---
+
+## 🌐 4️⃣ Streamlit Dashboard (`app/app.py`)
+
+### Dashboard provides:
+- Actual vs Forecast charts
+- Suspicious hour detection with probability thresholds
+- Detailed 48-hour contextual view
+- Interactive selection of timestamps
+- Data exploration tools for anomalies
+
+Run the app:
+```bash
+streamlit run app/app.py
 
 
 

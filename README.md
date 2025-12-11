@@ -11,7 +11,7 @@ Built using the UCI Household Power Consumption dataset.
 - Theft detection classifier using residual features
 - Clean feature engineering pipeline
 - Interactive Streamlit dashboard
-- Power BI dashboard (coming soon)
+- Power BI dashboard 
 
 ---
 
@@ -172,6 +172,7 @@ Run the app:
 ```bash
 streamlit run app/app.py
 ```
+
 
 
 

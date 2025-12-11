@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+venv/
+env/
+.venv/
+
+# macOS
+.DS_Store
+
+# Data
+data/
+*.csv
+*.txt
+*.zip
+
+# Models / checkpoints
+models/
+*.pkl
+*.joblib
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit / logs
+.streamlit/
+
+# VSCode
+.vscode/
+
+# OS generated
+Thumbs.db

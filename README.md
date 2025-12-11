@@ -33,3 +33,20 @@ Built using the UCI Household Power Consumption dataset.
 ```
 
 ---
+## 📊 Dataset
+
+This project uses the **UCI Household Electric Power Consumption Dataset**, a large real-world dataset containing over **2 million minute-level energy readings** from a single household over 4 years.
+
+### 📌 Dataset Source  
+UCI Machine Learning Repository / Kaggle Mirror
+
+📥 **Download Dataset:**  
+https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set
+
+---
+
+### 📂 How to Add the Dataset
+
+After downloading, place the raw file here in your project:
+
+

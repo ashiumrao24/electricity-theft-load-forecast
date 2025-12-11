@@ -47,6 +47,32 @@ https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set
 
 ### 📂 How to Add the Dataset
 
-After downloading, place the raw file here in your project:
+After downloading, place the raw file here in your project: data/household_power_consumption.txt
+
+⚠️ **Important:**  
+- This dataset is **not included** in the GitHub repository because it is large.  
+- It is ignored using `.gitignore` to keep the repository clean.
+
+---
+
+### 📑 Dataset Details
+The dataset includes:
+
+| Feature | Description |
+|---------|-------------|
+| Date | Date of measurement |
+| Time | Time of measurement |
+| Global_active_power | Household global minute-averaged active power (kW) |
+| Global_reactive_power | Reactive power (kW) |
+| Voltage | Voltage (V) |
+| Global_intensity | Current intensity (A) |
+| Sub_metering_1 | Energy sub-metering No.1 (Wh) |
+| Sub_metering_2 | Energy sub-metering No.2 (Wh) |
+| Sub_metering_3 | Energy sub-metering No.3 (Wh) |
+
+The preprocessing script converts this minute-level data into **hourly kWh** with additional engineered features for forecasting and theft detection.
+
+---
+
 
 

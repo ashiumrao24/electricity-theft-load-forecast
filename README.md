@@ -47,7 +47,10 @@ https://www.kaggle.com/datasets/uciml/electric-power-consumption-data-set
 
 ### 📂 How to Add the Dataset
 
-After downloading, place the raw file here in your project: data/household_power_consumption.txt
+After downloading, place the raw file here in your project:
+```bash
+data/household_power_consumption.txt
+```
 
 ⚠️ **Important:**  
 - This dataset is **not included** in the GitHub repository because it is large.  
@@ -73,6 +76,7 @@ The dataset includes:
 The preprocessing script converts this minute-level data into **hourly kWh** with additional engineered features for forecasting and theft detection.
 
 ---
+
 
 
 

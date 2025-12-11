@@ -16,3 +16,20 @@ Built using the UCI Household Power Consumption dataset.
 ---
 
 ## 📁 Project Structure
+```markdown
+📦 electricity-theft-load-forecast
+│
+├── 📂 app/                 — Streamlit dashboard
+│   └── app.py
+│
+├── 📂 src/                 — Preprocessing + ML models
+│   ├── preprocess.py
+│   ├── models_forecast.py
+│   └── models_theft.py
+│
+├── 📄 requirements.txt     — Python dependencies
+├── 📄 .gitignore           — Ignores dataset, models, venv
+└── 📄 README.md            — Project documentation
+```
+
+---

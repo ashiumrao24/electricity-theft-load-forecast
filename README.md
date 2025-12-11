@@ -171,6 +171,7 @@ This exported dataset is used for Power BI reporting.
 Run the app:
 ```bash
 streamlit run app/app.py
+```
 
 
 

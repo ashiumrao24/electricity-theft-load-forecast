@@ -174,7 +174,7 @@ streamlit run app/app.py
 ```
 ---
 
-## 📊 Interactive Tableau Dashboard
+## 📊 5️⃣ Interactive Tableau Dashboard
 
 🔗 **Live Dashboard (Tableau Public):**  
 https://public.tableau.com/app/profile/aashi.umrao/viz/Electricity_Theft_Detection_Dashboard/Dashboard1
@@ -184,6 +184,7 @@ https://public.tableau.com/app/profile/aashi.umrao/viz/Electricity_Theft_Detecti
 
 > Use the Date Range and Theft Risk Threshold filters to explore high-risk electricity
 > consumption patterns and identify suspicious hours.
+
 
 
 

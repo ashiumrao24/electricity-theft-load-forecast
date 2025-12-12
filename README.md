@@ -11,6 +11,7 @@ Built using the UCI Household Power Consumption dataset.
 - Theft detection classifier using residual features
 - Clean feature engineering pipeline
 - Interactive Streamlit dashboard
+- Tableau dasboard
 
 ---
 
@@ -171,6 +172,19 @@ Run the app:
 ```bash
 streamlit run app/app.py
 ```
+---
+
+## 📊 Interactive Tableau Dashboard
+
+🔗 **Live Dashboard (Tableau Public):**  
+https://public.tableau.com/app/profile/aashi.umrao/viz/Electricity_Theft_Detection_Dashboard/Dashboard1
+
+### 🖼️ Dashboard Preview
+![Dashboard Preview](assets/dashboard_preview.png)
+
+> Use the Date Range and Theft Risk Threshold filters to explore high-risk electricity
+> consumption patterns and identify suspicious hours.
+
 
 
 

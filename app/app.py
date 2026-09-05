@@ -49,7 +49,6 @@ def main():
         st.warning("No data in selected date range.")
         return
 
-    # Plot actual vs forecast
     with col1:
         st.subheader("Actual vs Forecast")
         fig, ax = plt.subplots(figsize=(12,4))
@@ -60,7 +59,6 @@ def main():
         ax.legend()
         st.pyplot(fig)
 
-    # Suspicious points
     st.subheader("Suspicious Hours (by theft_proba)")
     df_range = df_range.assign(theft_proba = df_range.get("theft_proba", 0.0))
     suspicious = df_range[df_range["theft_proba"] >= thr].sort_values("theft_proba", ascending=False)
@@ -71,11 +69,10 @@ def main():
 
         row = st.selectbox("Pick one suspicious timestamp for details", suspicious.index[:200].to_list())
         if row is not None:
-            sample = df.loc[row:row]  # single-row DataFrame
+            sample = df.loc[row:row]  
             st.markdown("**Selected timestamp details**")
             st.write(sample.T)
 
-            # show small plot around the sample (±24h)
             window = df.loc[row - pd.Timedelta(hours=24) : row + pd.Timedelta(hours=24)]
             fig2, ax2 = plt.subplots(figsize=(10,3))
             ax2.plot(window.index, window["energy_kwh"], label="Actual")

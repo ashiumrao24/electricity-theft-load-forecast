@@ -14,7 +14,6 @@ FORECAST_MODEL_PATH = MODEL_DIR / "xgb_forecast.pkl"
 THEFT_MODEL_PATH = MODEL_DIR / "xgb_theft.pkl"
 FINAL_EXPORT = Path("data/final_powerbi_dataset.csv")
 
-# Synthetic theft generation settings (tweak if you like)
 THEFT_FRACTION = 0.05   # fraction of hours to tamper
 MIN_SCALE = 0.2         # tamper multiplier min (reduce to 20% of real)
 MAX_SCALE = 0.7         # tamper multiplier max (reduce to 70% of real)

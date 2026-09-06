@@ -24,7 +24,7 @@ def train_model():
     X = df[features]
     y = df[target]
 
-    # time-based split (earliest 80% train, last 20% test)
+
     split = int(len(df) * 0.8)
     X_train, X_test = X.iloc[:split], X.iloc[split:]
     y_train, y_test = y.iloc[:split], y.iloc[split:]

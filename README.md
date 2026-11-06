@@ -86,6 +86,7 @@ The preprocessing script converts this minute-level data into **hourly kWh** wit
 - Handle missing or invalid values
 - Convert raw minute-level power to **hourly kWh**
   - `energy_kwh = (Global_active_power * 1/60)`
+- Keep missing and partial hours as missing rather than 0 kWh, then drop rows whose features cannot be computed
 - Generate engineered ML features:
   - Hour of day
   - Day of week
@@ -94,8 +95,8 @@ The preprocessing script converts this minute-level data into **hourly kWh** wit
   - Lag features:  
     - `lag_1h`, `lag_24h`, `lag_168h`
   - Rolling statistics:
-    - 24-hour rolling mean
-    - 24-hour rolling standard deviation
+    - Rolling mean of the previous 24 hours
+    - Rolling standard deviation of the previous 24 hours
 
 ### Output:
 ```bash
@@ -122,8 +123,11 @@ models/xgb_forecast.pkl
 ### Example Performance:
 | Metric | Value |
 |--------|--------|
-| MAE | ~0.32 |
-| RMSE | ~0.46 |
+| MAE | ~0.33 kWh |
+| RMSE | ~0.48 kWh |
+| Previous-hour baseline MAE | ~0.40 kWh |
+
+The test set is the final 20% of hours in time order.
 
 ---
 
@@ -185,14 +189,8 @@ https://public.tableau.com/app/profile/aashi.umrao/viz/Electricity_Theft_Detecti
 > Use the Date Range and Theft Risk Threshold filters to explore high-risk electricity
 > consumption patterns and identify suspicious hours.
 
+---
 
+## 🏗️ Extended Version: PySpark Data Lake
 
-
-
-
-
-
-
-
-
-
+The [`data-lake/`](data-lake/) folder processes the same dataset through a tested bronze, silver, and gold data lake using PySpark, Spark SQL, and partitioned Parquet.

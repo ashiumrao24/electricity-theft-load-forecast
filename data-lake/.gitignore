@@ -1,0 +1,10 @@
+.pytest_cache/
+.ruff_cache/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# The parent repo ignores *.txt and *.csv, so keep the files this folder needs.
+!requirements.txt
+!reports/
+!reports/*.csv

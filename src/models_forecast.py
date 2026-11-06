@@ -50,6 +50,7 @@ def train_model():
 
     print(f"MAE: {mae:.6f}")
     print(f"RMSE: {rmse:.6f}")
+    print(f"Baseline MAE (previous hour): {mean_absolute_error(y_test, X_test['lag_1']):.6f}")
 
     joblib.dump(model, MODEL_PATH)
     print(f"Saved forecast model to: {MODEL_PATH}")

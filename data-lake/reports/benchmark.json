@@ -1,0 +1,9 @@
+{
+  "query": "total 2009 energy in kWh",
+  "runs": 5,
+  "raw_text_median_seconds": 0.364,
+  "parquet_median_seconds": 0.112,
+  "speedup": 3.2,
+  "raw_result_kwh": 9371.92,
+  "parquet_result_kwh": 9371.92
+}

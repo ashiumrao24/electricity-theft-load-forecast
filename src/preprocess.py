@@ -40,9 +40,10 @@ def resample_hourly(df):
     print("-> Resampling to hourly energy (kWh)...", file=sys.stderr)
     power = df["Global_active_power"]
     # convert kW-minute -> kWh (kW * 1/60 hour)
-    energy_kwh = (power * (1.0/60.0)).resample("H").sum()
+    # min_count=60 keeps missing and partial hours as NaN. A plain sum() would turn an
+    # empty hour into 0 kWh. They stay in the index so shift(n) still means n hours ago.
+    energy_kwh = (power * (1.0/60.0)).resample("h").sum(min_count=60)
     hourly = pd.DataFrame({"energy_kwh": energy_kwh})
-    hourly = hourly.dropna()
     print("   hourly shape:", hourly.shape, file=sys.stderr)
     return hourly
 
@@ -58,8 +59,9 @@ def add_features(df):
     df["lag_24"] = df["energy_kwh"].shift(24)
     df["lag_168"] = df["energy_kwh"].shift(168)
 
-    df["rollmean_24"] = df["energy_kwh"].rolling(24).mean()
-    df["rollstd_24"] = df["energy_kwh"].rolling(24).std()
+    # shift(1) ends the window at the previous hour, so the target never leaks into its features.
+    df["rollmean_24"] = df["energy_kwh"].shift(1).rolling(24).mean()
+    df["rollstd_24"] = df["energy_kwh"].shift(1).rolling(24).std()
 
     df = df.dropna()
     print("   features shape (after dropna):", df.shape, file=sys.stderr)

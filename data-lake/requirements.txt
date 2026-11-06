@@ -1,0 +1,3 @@
+pyspark==3.5.7
+jdk4py>=21,<22
+pytest>=8.0

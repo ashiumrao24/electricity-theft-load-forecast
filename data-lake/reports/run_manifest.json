@@ -1,0 +1,62 @@
+{
+  "finished_at": "2026-11-06T14:31:23.500416+00:00",
+  "input": "../data/household_power_consumption.txt",
+  "row_counts": {
+    "bronze": 2075259,
+    "silver": 2049280,
+    "quarantine": 25979,
+    "quarantine_by_reason": {
+      "missing_reading": 25979
+    },
+    "gold": {
+      "hourly_energy": 34589,
+      "daily_usage": 1433,
+      "monthly_kpis": 48,
+      "data_gaps": 71,
+      "hourly_anomalies": 1678
+    }
+  },
+  "checks": [
+    {
+      "name": "rows_unaccounted_for",
+      "value": 0,
+      "limit": "= 0",
+      "passed": true
+    },
+    {
+      "name": "duplicate_timestamps_in_silver",
+      "value": 0,
+      "limit": "= 0",
+      "passed": true
+    },
+    {
+      "name": "null_timestamps_in_silver",
+      "value": 0,
+      "limit": "= 0",
+      "passed": true
+    },
+    {
+      "name": "quarantine_pct",
+      "value": 1.2518,
+      "limit": "<= 5.0",
+      "passed": true
+    },
+    {
+      "name": "hourly_vs_minute_energy_diff_kwh",
+      "value": 0.0,
+      "limit": "< 0.001",
+      "passed": true
+    },
+    {
+      "name": "duplicate_hours_in_gold",
+      "value": 0,
+      "limit": "= 0",
+      "passed": true
+    }
+  ],
+  "timings": {
+    "bronze_seconds": 4.9,
+    "silver_seconds": 16.3,
+    "gold_seconds": 4.9
+  }
+}
